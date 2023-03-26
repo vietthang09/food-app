@@ -1,114 +1,106 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/screen/home_screen/singal_product.dart';
+import 'package:food_app/screen/home_screen/drawer_side.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  Widget singalProduct() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      height: 230,
-      width: 160,
-      decoration: BoxDecoration(
-        color: Color(0xffd9dad9),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-              flex: 2, child: Image.asset('assets/fresh-fruit_vegetable.png')),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Fresh Basil",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "50\$/50 Gram",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: Container(
-                        padding: EdgeInsets.only(left: 5),
-                        height: 30,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Row(
-                          children: [
-                            Expanded(
-                                child: Text(
-                              "50 Gram",
-                              style: TextStyle(fontSize: 10),
-                            )),
-                            Center(
-                              child: Icon(
-                                Icons.arrow_drop_down,
-                                size: 20,
-                                color: Colors.yellow,
-                              ),
-                            )
-                          ],
-                        ),
-                      )),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Expanded(
-                          child: Container(
-                        height: 30,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.remove,
-                              size: 15,
-                              color: Color(0xffd0b84c),
-                            ),
-                            Text(
-                              "1",
-                              style: TextStyle(
-                                  color: Color(0xffd0b84c),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Icon(
-                              Icons.add,
-                              size: 15,
-                              color: Color(0xffd0b84c),
-                            ),
-                          ],
-                        ),
-                      )),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
+  Widget _buildHerbsProduct(context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Herbs Seasonings"),
+              Text(
+                "view all",
+                style: TextStyle(color: Colors.grey),
+              )
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
-  Widget listTile({IconData? icon, String? title}) {
-    return ListTile(
-      leading: Icon(icon, size: 32),
-      title: Text(
-        title!,
-        style: TextStyle(color: Colors.black45),
-      ),
+  Widget _buildFreshProduct(context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Fresh Fruits"),
+              Text(
+                "view all",
+                style: TextStyle(color: Colors.grey),
+              )
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRootProduct() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Root Vegetable"),
+              Text(
+                "view all",
+                style: TextStyle(color: Colors.grey),
+              )
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+              SingalProduct(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -116,96 +108,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcbcbcb),
-      drawer: Drawer(
-          child: Container(
-        color: Color(0xffd1ad17),
-        child: ListView(
-          children: [
-            DrawerHeader(
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white54,
-                    radius: 43,
-                    child: CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.red,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Welcome Guest"),
-                      SizedBox(
-                        height: 7,
-                      ),
-                      Container(
-                        height: 30,
-                        child: MaterialButton(
-                          onPressed: () {},
-                          child: Text("Login"),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              side: BorderSide(width: 2)),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            listTile(icon: Icons.home_outlined, title: "Home"),
-            listTile(icon: Icons.shop_outlined, title: "Review Cart"),
-            listTile(icon: Icons.person_outline, title: "My Profile"),
-            listTile(
-                icon: Icons.notifications_outlined, title: "Notifications"),
-            listTile(icon: Icons.star_outline, title: "Rating & Review"),
-            listTile(icon: Icons.favorite_outline, title: "Wishlist"),
-            listTile(icon: Icons.copy_outlined, title: "Raise a Complaint"),
-            listTile(icon: Icons.format_quote_outlined, title: "FAQs"),
-            Container(
-              height: 350,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Contact Support"),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Text("Call us:"),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text("+123456789"),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Text("Mail us:"),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text("hello@retry.com"),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      )),
+      drawer: DrawerSide(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         title:
@@ -310,56 +213,9 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Herbs Seasonings"),
-                  Text(
-                    "view all",
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  singalProduct(),
-                  singalProduct(),
-                  singalProduct(),
-                  singalProduct(),
-                  singalProduct(),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Fresh Fruits"),
-                  Text(
-                    "view all",
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  singalProduct(),
-                  singalProduct(),
-                  singalProduct(),
-                  singalProduct(),
-                  singalProduct(),
-                ],
-              ),
-            ),
+            _buildHerbsProduct(context),
+            _buildFreshProduct(context),
+            _buildRootProduct()
           ],
         ),
       ),
