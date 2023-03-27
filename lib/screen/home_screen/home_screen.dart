@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screen/home_screen/singal_product.dart';
 import 'package:food_app/screen/home_screen/drawer_side.dart';
+import 'package:food_app/screen/product_overview/product_overview.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,11 +27,38 @@ class HomeScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
+              SingalProduct(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ProductOverview(
+                              productName: "Fresh Basil",
+                              productImage:
+                                  "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png",
+                            )));
+                  },
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
             ],
           ),
         ),
@@ -59,11 +87,31 @@ class HomeScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
             ],
           ),
         ),
@@ -92,11 +140,31 @@ class HomeScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
-              SingalProduct(),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
+              SingalProduct(
+                  onTap: () {},
+                  productName: "Fresh Basil",
+                  productImage:
+                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
             ],
           ),
         ),

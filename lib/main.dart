@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:food_app/auth/sign_in.dart';
 import 'package:food_app/screen/home_screen/home_screen.dart';
@@ -11,6 +13,7 @@ void main() async {
           appId: "1:225954428943:web:6acf893cb0bd89e28d4b7a",
           messagingSenderId: "225954428943",
           projectId: "food-app-eba83"));
+  HttpOverrides.global = CustomHttpOverrides();
   runApp(const MyApp());
 }
 
@@ -21,5 +24,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(home: HomeScreen());
+  }
+}
+
+class CustomHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
