@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/providers/review_cart_provider.dart';
 import 'package:food_app/widgets/count.dart';
 import 'package:provider/provider.dart';
-import 'package:food_app/providers/review_cart_provider.dart';
 
 class SingleItem extends StatefulWidget {
   bool isBool = false;
@@ -130,7 +130,7 @@ class _SingleItemState extends State<SingleItem> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        "50 Gram",
+                                       "50 Gram",
                                         style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 14,
@@ -165,14 +165,13 @@ class _SingleItemState extends State<SingleItem> {
                           productImage: widget.productImage,
                           productName: widget.productName,
                           productPrice: widget.productPrice,
-                          productUnit: "",
                         )
                       : Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Column(
                             children: [
                               InkWell(
-                                onTap: widget.onDelete(),
+                                onTap: widget.onDelete,
                                 child: Icon(
                                   Icons.delete,
                                   size: 30,
@@ -201,6 +200,7 @@ class _SingleItemState extends State<SingleItem> {
                                                   Fluttertoast.showToast(
                                                     msg:
                                                         "You reach minimum limit",
+                                                
                                                   );
                                                 } else {
                                                   setState(() {

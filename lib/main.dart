@@ -1,11 +1,14 @@
-import 'dart:io';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:food_app/auth/sign_in.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/providers/check_out_provider.dart';
 import 'package:food_app/providers/product_provider.dart';
-import 'package:food_app/screen/home_screen/home_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:food_app/providers/review_cart_provider.dart';
+import 'package:food_app/providers/user_provider.dart';
+import 'package:food_app/providers/wishlist_provider.dart';
+import 'package:food_app/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -13,37 +16,48 @@ void main() async {
   await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: "AIzaSyD6VOffFcqOrm18dFnmFEFPm8GO-bTd5Fo",
-          appId: "1:225954428943:web:6acf893cb0bd89e28d4b7a",
+          appId: "1:225954428943:android:0f568d0feadd66b38d4b7a",
           messagingSenderId: "225954428943",
           projectId: "food-app-eba83"));
-  HttpOverrides.global = CustomHttpOverrides();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ProductProvider>(
-      create: (context) => ProductProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ProductProvider>(
+          create: (context) => ProductProvider(),
+        ),
+        ChangeNotifierProvider<UserProvider>(
+          create: (context) => UserProvider(),
+        ),
+        ChangeNotifierProvider<ReviewCartProvider>(
+          create: (context) => ReviewCartProvider(),
+        ),
+        ChangeNotifierProvider<WishListProvider>(
+          create: (context) => WishListProvider(),
+        ),
+        ChangeNotifierProvider<CheckoutProvider>(
+          create: (context) => CheckoutProvider(),
+        ),
+      ],
       child: MaterialApp(
         theme: ThemeData(
             primaryColor: primaryColor,
             scaffoldBackgroundColor: scaffoldBackgroundColor),
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapShot) {
+            if (snapShot.hasData) {
+              return HomeScreen();
+            }
+            return SignIn();
+          },
+        ),
       ),
     );
-  }
-}
-
-class CustomHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
   }
 }

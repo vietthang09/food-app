@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:food_app/models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
   ProductModel productModel;
 
+  List<ProductModel> search = [];
   productModels(QueryDocumentSnapshot element) {
+    
     productModel = ProductModel(
       productImage: element.get("productImage"),
       productName: element.get("productName"),
@@ -13,18 +15,25 @@ class ProductProvider with ChangeNotifier {
       productId: element.get("productId"),
       productUnit: element.get("productUnit"),
     );
+    search.add(productModel);
   }
 
-  // Herbs Product
+  /////////////// herbsProduct ///////////////////////////////
   List<ProductModel> herbsProductList = [];
-  fetchHerbsProductData() async {
+
+  fatchHerbsProductData() async {
     List<ProductModel> newList = [];
+
     QuerySnapshot value =
         await FirebaseFirestore.instance.collection("HerbsProduct").get();
-    for (var element in value.docs) {
-      productModels(element);
-      newList.add(productModel);
-    }
+
+    value.docs.forEach(
+      (element) {
+        productModels(element);
+
+        newList.add(productModel);
+      },
+    );
     herbsProductList = newList;
     notifyListeners();
   }
@@ -33,16 +42,22 @@ class ProductProvider with ChangeNotifier {
     return herbsProductList;
   }
 
-  // Fresh Product
+//////////////// Fresh Product ///////////////////////////////////////
+
   List<ProductModel> freshProductList = [];
-  fetchFreshProductData() async {
+
+  fatchFreshProductData() async {
     List<ProductModel> newList = [];
+
     QuerySnapshot value =
         await FirebaseFirestore.instance.collection("FreshProduct").get();
-    for (var element in value.docs) {
-      productModels(element);
-      newList.add(productModel);
-    }
+
+    value.docs.forEach(
+      (element) {
+        productModels(element);
+        newList.add(productModel);
+      },
+    );
     freshProductList = newList;
     notifyListeners();
   }
@@ -51,21 +66,32 @@ class ProductProvider with ChangeNotifier {
     return freshProductList;
   }
 
-  // Root Product
+//////////////// Root Product ///////////////////////////////////////
+
   List<ProductModel> rootProductList = [];
-  fetchRootProductData() async {
+
+  fatchRootProductData() async {
     List<ProductModel> newList = [];
+
     QuerySnapshot value =
         await FirebaseFirestore.instance.collection("RootProduct").get();
-    for (var element in value.docs) {
-      productModels(element);
-      newList.add(productModel);
-    }
+
+    value.docs.forEach(
+      (element) {
+        productModels(element);
+        newList.add(productModel);
+      },
+    );
     rootProductList = newList;
     notifyListeners();
   }
 
   List<ProductModel> get getRootProductDataList {
     return rootProductList;
+  }
+
+  /////////////////// Search Return ////////////
+  List<ProductModel> get gerAllProductSearch {
+    return search;
   }
 }
