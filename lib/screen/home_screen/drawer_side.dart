@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DrawerSide extends StatelessWidget {
-  const DrawerSide({super.key});
-  Widget listTile({IconData? icon, String? title}) {
+  const DrawerSide({key});
+  Widget listTile({IconData icon, String title}) {
     return ListTile(
       leading: Icon(icon, size: 32),
       title: Text(
-        title!,
+        title,
         style: TextStyle(color: Colors.black45),
       ),
     );

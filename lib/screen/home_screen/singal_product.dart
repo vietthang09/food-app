@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class SingalProduct extends StatelessWidget {
   final String productImage;
   final String productName;
-  final void Function()? onTap;
+  final int productPrice;
+  final void Function() onTap;
 
   SingalProduct({
-    required this.productImage,
-    required this.productName,
-    required this.onTap,
+    this.productImage,
+    this.productName,
+    this.productPrice,
+    this.onTap,
   });
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class SingalProduct extends StatelessWidget {
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "50\$/50 Gram",
+                    '$productPrice\$/50 Gram',
                     style: TextStyle(color: Colors.grey),
                   ),
                   Row(

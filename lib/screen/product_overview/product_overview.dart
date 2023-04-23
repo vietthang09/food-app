@@ -7,7 +7,7 @@ class ProductOverview extends StatefulWidget {
   final String productName;
   final String productImage;
 
-  ProductOverview({required this.productImage, required this.productName});
+  ProductOverview({this.productImage, this.productName});
 
   @override
   State<ProductOverview> createState() => _ProductOverviewState();
@@ -17,11 +17,11 @@ class _ProductOverviewState extends State<ProductOverview> {
   SinginCharacter _character = SinginCharacter.fill;
 
   Widget bottomNavigatorBar({
-    Color? iconColor,
-    Color? backgroundColor,
-    Color? color,
-    String? title,
-    IconData? iconData,
+    Color iconColor,
+    Color backgroundColor,
+    Color color,
+    String title,
+    IconData iconData,
   }) {
     return Expanded(
       child: Container(
@@ -39,7 +39,7 @@ class _ProductOverviewState extends State<ProductOverview> {
               width: 5,
             ),
             Text(
-              title!,
+              title,
               style: TextStyle(color: color),
             ),
           ],
@@ -119,7 +119,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                             activeColor: Colors.green[700],
                             onChanged: (value) {
                               setState(() {
-                                _character = value!;
+                                _character = value;
                               });
                             },
                           )

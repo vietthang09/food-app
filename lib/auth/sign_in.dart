@@ -17,8 +17,8 @@ class _SignInState extends State<SignIn> {
       );
       final FirebaseAuth _auth = FirebaseAuth.instance;
 
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication? googleAuth =
+      final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
           await googleUser?.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
@@ -26,8 +26,7 @@ class _SignInState extends State<SignIn> {
         idToken: googleAuth?.idToken,
       );
 
-      final User? user = (await _auth.signInWithCredential(credential)).user;
-
+      final User user = (await _auth.signInWithCredential(credential)).user;
       return;
     } catch (e) {
       print(e);

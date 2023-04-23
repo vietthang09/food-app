@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/providers/product_provider.dart';
 import 'package:food_app/screen/home_screen/singal_product.dart';
 import 'package:food_app/screen/home_screen/drawer_side.dart';
 import 'package:food_app/screen/product_overview/product_overview.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
+  @override
+  // ignore: library_private_types_in_public_api
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  ProductProvider productProvider;
   Widget _buildHerbsProduct(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -14,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: const [
               Text("Herbs Seasonings"),
               Text(
                 "view all",
@@ -26,40 +35,20 @@ class HomeScreen extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SingalProduct(
+            children:
+                productProvider.getHerbsProductDataList.map((herbsProductData) {
+              return SingalProduct(
+                  productImage: herbsProductData.productImage,
+                  productName: herbsProductData.productName,
+                  productPrice: herbsProductData.productPrice,
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductOverview(
-                              productName: "Fresh Basil",
-                              productImage:
-                                  "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png",
+                              productName: herbsProductData.productName,
+                              productImage: herbsProductData.productImage,
                             )));
-                  },
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-            ],
+                  });
+            }).toList(),
           ),
         ),
       ],
@@ -74,7 +63,7 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: const [
               Text("Fresh Fruits"),
               Text(
                 "view all",
@@ -86,33 +75,20 @@ class HomeScreen extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-            ],
+            children:
+                productProvider.getFreshProductDataList.map((freshProductData) {
+              return SingalProduct(
+                  productImage: freshProductData.productImage,
+                  productName: freshProductData.productName,
+                  productPrice: freshProductData.productPrice,
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ProductOverview(
+                              productName: freshProductData.productName,
+                              productImage: freshProductData.productImage,
+                            )));
+                  });
+            }).toList(),
           ),
         ),
       ],
@@ -127,7 +103,7 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: const [
               Text("Root Vegetable"),
               Text(
                 "view all",
@@ -139,33 +115,20 @@ class HomeScreen extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-              SingalProduct(
-                  onTap: () {},
-                  productName: "Fresh Basil",
-                  productImage:
-                      "https://www.tgfresh.com/wp-content/uploads/2019/03/fresh-fruit_vegetable_icon.png"),
-            ],
+            children:
+                productProvider.getRootProductDataList.map((rootProductData) {
+              return SingalProduct(
+                  productImage: rootProductData.productImage,
+                  productName: rootProductData.productName,
+                  productPrice: rootProductData.productPrice,
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ProductOverview(
+                              productName: rootProductData.productName,
+                              productImage: rootProductData.productImage,
+                            )));
+                  });
+            }).toList(),
           ),
         ),
       ],
@@ -173,15 +136,24 @@ class HomeScreen extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    productProvider = Provider.of(context);
+    productProvider.fetchHerbsProductData();
+    productProvider.fetchFreshProductData();
+    productProvider.fetchRootProductData();
     return Scaffold(
-      backgroundColor: Color(0xffcbcbcb),
-      drawer: DrawerSide(),
+      backgroundColor: const Color(0xffcbcbcb),
+      drawer: const DrawerSide(),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        title:
-            Text("Home", style: TextStyle(color: Colors.black, fontSize: 17)),
-        actions: [
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text("Home",
+            style: TextStyle(color: Colors.black, fontSize: 17)),
+        actions: const [
           CircleAvatar(
             radius: 12,
             backgroundColor: Color(0xffd4d181),
@@ -192,7 +164,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
+            padding: EdgeInsets.symmetric(horizontal: 5),
             child: CircleAvatar(
               radius: 12,
               backgroundColor: Color(0xffd4d181),
@@ -204,7 +176,7 @@ class HomeScreen extends StatelessWidget {
             ),
           )
         ],
-        backgroundColor: Color(0xffd6b738),
+        backgroundColor: const Color(0xffd6b738),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -213,7 +185,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               height: 150,
               decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage('assets/home_banner.jpg')),
                   color: Colors.red,
@@ -231,14 +203,14 @@ class HomeScreen extends StatelessWidget {
                             child: Container(
                               height: 50,
                               width: 100,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffd1ad17),
                                 borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(50),
                                   bottomLeft: Radius.circular(50),
                                 ),
                               ),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   'VKU',
                                   style: TextStyle(
@@ -262,8 +234,8 @@ class HomeScreen extends StatelessWidget {
                                 color: Colors.green[100],
                                 fontWeight: FontWeight.bold),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20),
                             child: Text(
                               'On all vegetables products',
                               style: TextStyle(

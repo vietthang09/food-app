@@ -2,8 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:food_app/auth/sign_in.dart';
+import 'package:food_app/config/colors.dart';
+import 'package:food_app/providers/product_provider.dart';
 import 'package:food_app/screen/home_screen/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,18 +21,27 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomeScreen());
+    return ChangeNotifierProvider<ProductProvider>(
+      create: (context) => ProductProvider(),
+      child: MaterialApp(
+        theme: ThemeData(
+            primaryColor: primaryColor,
+            scaffoldBackgroundColor: scaffoldBackgroundColor),
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen(),
+      ),
+    );
   }
 }
 
 class CustomHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context) {
+  HttpClient createHttpClient(SecurityContext context) {
     return super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
