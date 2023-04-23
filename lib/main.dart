@@ -16,7 +16,7 @@ void main() async {
   await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: "AIzaSyD6VOffFcqOrm18dFnmFEFPm8GO-bTd5Fo",
-          appId: "1:225954428943:android:0f568d0feadd66b38d4b7a",
+          appId: "1:225954428943:android:7975dff5c88a84698d4b7a",
           messagingSenderId: "225954428943",
           projectId: "food-app-eba83"));
   runApp(MyApp());
