@@ -113,7 +113,6 @@ class _ProductOverviewState extends State<ProductOverview> {
                     wishListName: widget.productName,
                     wishListPrice: widget.productPrice,
                     wishListQuantity: 2,
-                    
                   );
                 } else {
                   wishListProvider.deleteWishtList(widget.productId);
@@ -154,11 +153,9 @@ class _ProductOverviewState extends State<ProductOverview> {
                     subtitle: Text("\$50"),
                   ),
                   Container(
-                      height: 250,
-                      padding: EdgeInsets.all(40),
-                      child: Image.network(
-                        widget.productImage ?? "",
-                      )),
+                      height: 160,
+                      // padding: EdgeInsets.all(40),
+                      child: Image.network(widget.productImage ?? "")),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     width: double.infinity,
