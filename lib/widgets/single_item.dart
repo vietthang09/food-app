@@ -130,7 +130,7 @@ class _SingleItemState extends State<SingleItem> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                       "50 Gram",
+                                        "50 Gram",
                                         style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 14,
@@ -148,7 +148,8 @@ class _SingleItemState extends State<SingleItem> {
                                 ),
                               ),
                             )
-                          : Text(widget.productUnit)
+                          : Text(widget.productUnit ??
+                              widget.productQuantity.toString())
                     ],
                   ),
                 ),
@@ -200,7 +201,6 @@ class _SingleItemState extends State<SingleItem> {
                                                   Fluttertoast.showToast(
                                                     msg:
                                                         "You reach minimum limit",
-                                                
                                                   );
                                                 } else {
                                                   setState(() {

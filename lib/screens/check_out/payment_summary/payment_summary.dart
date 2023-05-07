@@ -48,7 +48,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
       bottomNavigationBar: ListTile(
         title: Text("Total Amount"),
         subtitle: Text(
-          "\$${total + 5 ?? totalPrice}",
+          "\$${total ?? totalPrice}",
           style: TextStyle(
             color: Colors.green[900],
             fontWeight: FontWeight.bold,
@@ -59,16 +59,15 @@ class _PaymentSummaryState extends State<PaymentSummary> {
           width: 160,
           child: MaterialButton(
             onPressed: () {
-              // myType == AddressTypes.OnlinePayment
-              //     ? Navigator.of(context).push(
-              //         MaterialPageRoute(
-              //           builder: (context) => MyGooglePay(
-              //             total: total,
-              //           ),
-              //         ),
-              //       )
-              //     : Container();
-            
+              myType == AddressTypes.OnlinePayment
+                  ? Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => MyGooglePay(
+                          total: total,
+                        ),
+                      ),
+                    )
+                  : Container();
             },
             child: Text(
               "Pleace Order",

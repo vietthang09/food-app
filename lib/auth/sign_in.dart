@@ -31,6 +31,7 @@ class _SignInState extends State<SignIn> {
       );
 
       final User user = (await _auth.signInWithCredential(credential)).user;
+      // print("signed in " + user.displayName);
       userProvider.addUserData(
         currentUser: user,
         userEmail: user.email,
@@ -66,7 +67,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   Text('Sign in to contunue'),
                   Text(
-                    'Vegi',
+                    'VKU',
                     style:
                         TextStyle(fontSize: 50, color: Colors.white, shadows: [
                       BoxShadow(
@@ -78,11 +79,6 @@ class _SignInState extends State<SignIn> {
                   ),
                   Column(
                     children: [
-                      SignInButton(
-                        Buttons.Apple,
-                        text: "Sign in with Apple",
-                        onPressed: () {},
-                      ),
                       SignInButton(
                         Buttons.Google,
                         text: "Sign in with Google",

@@ -102,14 +102,14 @@ class _DrawerSideState extends State<DrawerSide> {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => MyProfile(userProvider:widget.userProvider),
+                    builder: (context) =>
+                        MyProfile(userProvider: widget.userProvider),
                   ),
                 );
               },
             ),
             listTile(
-                iconData: Icons.notifications_outlined, title: "Notificatio"),
-            listTile(iconData: Icons.star_outline, title: "Rating & Review"),
+                iconData: Icons.notifications_outlined, title: "Notifications"),
             listTile(
                 iconData: Icons.favorite_outline,
                 title: "Wishlist",
@@ -120,7 +120,6 @@ class _DrawerSideState extends State<DrawerSide> {
                     ),
                   );
                 }),
-            listTile(iconData: Icons.copy_outlined, title: "Raise a Complaint"),
             listTile(iconData: Icons.format_quote_outlined, title: "FAQs"),
             Container(
               height: 350,

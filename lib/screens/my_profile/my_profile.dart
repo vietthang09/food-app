@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/auth/sign_in.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/main.dart';
 import 'package:food_app/models/user_model.dart';
 import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
@@ -13,14 +16,20 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut().then((value) => Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => SignIn())));
+  }
+
   @override
-  Widget listTile({IconData icon, String title}) {
+  Widget listTile({IconData icon, String title, Function onTap}) {
     return Column(
       children: [
         Divider(
           height: 1,
         ),
         ListTile(
+          onTap: onTap,
           leading: Icon(icon),
           title: Text(title),
           trailing: Icon(Icons.arrow_forward_ios),
@@ -56,7 +65,7 @@ class _MyProfileState extends State<MyProfile> {
                 color: primaryColor,
               ),
               Container(
-                height: 548,
+                height: 350,
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
@@ -125,7 +134,11 @@ class _MyProfileState extends State<MyProfile> {
                         icon: Icons.policy_outlined, title: "Privacy Policy"),
                     listTile(icon: Icons.add_chart, title: "About"),
                     listTile(
-                        icon: Icons.exit_to_app_outlined, title: "Log Out"),
+                        icon: Icons.exit_to_app_outlined,
+                        title: "Log Out",
+                        onTap: () {
+                          _signOut();
+                        }),
                   ],
                 ),
               )

@@ -24,15 +24,13 @@ class ReviewCartProvider with ChangeNotifier {
         "cartImage": cartImage,
         "cartPrice": cartPrice,
         "cartQuantity": cartQuantity,
-        "cartUnit":cartUnit,
-        "isAdd":true,
+        "cartUnit": cartUnit,
+        "isAdd": true,
       },
     );
   }
 
-
-
-void updateReviewCartData({
+  void updateReviewCartData({
     String cartId,
     String cartName,
     String cartImage,
@@ -51,15 +49,10 @@ void updateReviewCartData({
         "cartImage": cartImage,
         "cartPrice": cartPrice,
         "cartQuantity": cartQuantity,
-        "isAdd":true,
+        "isAdd": true,
       },
     );
   }
-
-
-
-
-
 
   List<ReviewCartModel> reviewCartDataList = [];
   void getReviewCartData() async {
@@ -77,7 +70,7 @@ void updateReviewCartData({
         cartName: element.get("cartName"),
         cartPrice: element.get("cartPrice"),
         cartQuantity: element.get("cartQuantity"),
-      cartUnit: element.get("cartUnit"),
+        cartUnit: element.get("cartUnit"),
       );
       newList.add(reviewCartModel);
     });
@@ -89,19 +82,15 @@ void updateReviewCartData({
     return reviewCartDataList;
   }
 
-
 //// TotalPrice  ///
 
-
-getTotalPrice(){
-  double total = 0.0;
-  reviewCartDataList.forEach((element) { 
-    total += element.cartPrice * element.cartQuantity;
-    
-  });
-  return total;
-}
-
+  getTotalPrice() {
+    double total = 0.0;
+    reviewCartDataList.forEach((element) {
+      total += element.cartPrice * element.cartQuantity;
+    });
+    return total;
+  }
 
 ////////////// ReviCartDeleteFunction ////////////
   reviewCartDataDelete(cartId) {
@@ -111,6 +100,6 @@ getTotalPrice(){
         .collection("YourReviewCart")
         .doc(cartId)
         .delete();
-        notifyListeners();
+    notifyListeners();
   }
 }
