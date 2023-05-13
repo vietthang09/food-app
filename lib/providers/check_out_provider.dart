@@ -4,7 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_app/models/delivery_address_model.dart';
 import 'package:food_app/models/review_cart_model.dart';
+import 'package:food_app/providers/review_cart_provider.dart';
+import 'package:food_app/screens/home/home_screen.dart';
 import 'package:location/location.dart';
+import 'package:flutter/material.dart';
 
 class CheckoutProvider with ChangeNotifier {
   bool isloadding = false;
@@ -112,12 +115,11 @@ class CheckoutProvider with ChangeNotifier {
 
 ////// Order /////////
 
-  addPlaceOderData({
-    List<ReviewCartModel> oderItemList,
-    var subTotal,
-    var address,
-    var shipping,
-  }) async {
+  addPlaceOderData(
+      {List<ReviewCartModel> oderItemList,
+      var subTotal,
+      var shipping,
+      var context}) async {
     FirebaseFirestore.instance
         .collection("Order")
         .doc(FirebaseAuth.instance.currentUser.uid)
@@ -138,17 +140,16 @@ class CheckoutProvider with ChangeNotifier {
                   "orderQuantity": e.cartQuantity
                 })
             .toList(),
-        // "address": address
-        //     .map((e) => {
-        //           "orderTime": DateTime.now(),
-        //           "orderImage": e.cartImage,
-        //           "orderName": e.cartName,
-        //           "orderUnit": e.cartUnit,
-        //           "orderPrice": e.cartPrice,
-        //           "orderQuantity": e.cartQuantity
-        //         })
-        //     .toList(),
       },
+    );
+    oderItemList
+        .map((e) => {ReviewCartProvider().reviewCartDataDelete(e.cartId)})
+        .toList();
+    Fluttertoast.showToast(msg: "Order succeffuly!");
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(),
+      ),
     );
   }
 }
