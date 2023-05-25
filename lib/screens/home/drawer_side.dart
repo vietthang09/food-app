@@ -87,7 +87,7 @@ class _DrawerSideState extends State<DrawerSide> {
               },
             ),
             listTile(
-              iconData: Icons.shop_outlined,
+              iconData: Icons.shopping_cart_outlined,
               title: "Review Cart",
               onTap: () {
                 Navigator.of(context).push(

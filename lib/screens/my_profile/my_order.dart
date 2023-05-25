@@ -32,6 +32,7 @@ class _MyOrderState extends State<MyOrder> {
             var orderPrice = data.orderList[index]['orderPrice'];
             var orderQuantity = data.orderList[index]['orderQuantity'];
             return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                     child: Container(
@@ -42,6 +43,8 @@ class _MyOrderState extends State<MyOrder> {
                     child: Container(
                   height: 90,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         orderName,
@@ -51,14 +54,14 @@ class _MyOrderState extends State<MyOrder> {
                             fontSize: 16),
                       ),
                       Text(
-                        "${orderPrice}\$",
+                        "Price: ${orderPrice}\$",
                         style: TextStyle(
-                            color: textColor, fontWeight: FontWeight.bold),
+                            color: textColor, fontWeight: FontWeight.normal),
                       ),
                       Text(
-                        "${orderQuantity}\$",
+                        "Quantity: ${orderQuantity}",
                         style: TextStyle(
-                            color: textColor, fontWeight: FontWeight.bold),
+                            color: textColor, fontWeight: FontWeight.normal),
                       )
                     ],
                   ),
@@ -105,16 +108,32 @@ class _MyOrderState extends State<MyOrder> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("\$${data.total.toString()}"),
-                    Text(DateTime.fromMillisecondsSinceEpoch(
-                            data.orderList[0]['orderTime'].seconds * 1000)
-                        .toString()),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Total: \$${data.total.toString()}",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          "Ordered at:" +
+                              DateTime.fromMillisecondsSinceEpoch(
+                                      data.orderList[0]['orderTime'].seconds *
+                                          1000)
+                                  .toString(),
+                          style: TextStyle(fontWeight: FontWeight.w200),
+                        ),
+                      ],
+                    ),
                     MaterialButton(
                       onPressed: () {
                         showAlertDialog(context, data);
                       },
                       child: Text(
-                        "View",
+                        "Detail",
                         style: TextStyle(color: textColor),
                       ),
                       color: primaryColor,
@@ -122,6 +141,12 @@ class _MyOrderState extends State<MyOrder> {
                           borderRadius: BorderRadius.circular(30)),
                     )
                   ],
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Divider(
+                  height: 1,
                 )
               ],
             ),

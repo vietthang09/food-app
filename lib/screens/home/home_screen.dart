@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productPrice: herbsProductData.productPrice,
                   productImage: herbsProductData.productImage,
                   productName: herbsProductData.productName,
-                  productUnit:herbsProductData ,
+                  productUnit: herbsProductData,
                 );
               },
             ).toList(),
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productImage: freshProductData.productImage,
                   productName: freshProductData.productName,
                   productPrice: freshProductData.productPrice,
-                  productUnit:freshProductData,
+                  productUnit: freshProductData,
                 );
               },
             ).toList(),
@@ -139,7 +139,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-
 
   Widget _buildRootProduct() {
     return Column(
@@ -259,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: Color(0xffd6d382),
                 radius: 15,
                 child: Icon(
-                  Icons.shop,
+                  Icons.shopping_cart_outlined,
                   size: 17,
                   color: textColor,
                 ),

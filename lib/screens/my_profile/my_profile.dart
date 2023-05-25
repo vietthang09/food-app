@@ -66,7 +66,7 @@ class _MyProfileState extends State<MyProfile> {
                 color: primaryColor,
               ),
               Container(
-                height: 350,
+                height: 400,
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
@@ -132,11 +132,6 @@ class _MyProfileState extends State<MyProfile> {
                             ),
                           );
                         }),
-                    listTile(
-                        icon: Icons.location_on_outlined,
-                        title: "My Delivery Address"),
-                    listTile(
-                        icon: Icons.person_outline, title: "Refer A Friends"),
                     listTile(
                         icon: Icons.file_copy_outlined,
                         title: "Terms & Conditions"),
