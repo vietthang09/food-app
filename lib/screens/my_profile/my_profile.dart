@@ -6,6 +6,7 @@ import 'package:food_app/main.dart';
 import 'package:food_app/models/user_model.dart';
 import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
+import 'package:food_app/screens/my_profile/my_order.dart';
 
 class MyProfile extends StatefulWidget {
   UserProvider userProvider;
@@ -121,7 +122,16 @@ class _MyProfileState extends State<MyProfile> {
                         ),
                       ],
                     ),
-                    listTile(icon: Icons.shop_outlined, title: "My Orders"),
+                    listTile(
+                        icon: Icons.shop_outlined,
+                        title: "My Orders",
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => MyOrder(),
+                            ),
+                          );
+                        }),
                     listTile(
                         icon: Icons.location_on_outlined,
                         title: "My Delivery Address"),

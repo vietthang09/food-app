@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/home_screen.dart';
+import 'package:food_app/screens/my_profile/my_order.dart';
 import 'package:food_app/screens/my_profile/my_profile.dart';
 import 'package:food_app/screens/review_cart/review_cart.dart';
 import 'package:food_app/screens/wishList/wish_list.dart';
@@ -109,8 +110,6 @@ class _DrawerSideState extends State<DrawerSide> {
               },
             ),
             listTile(
-                iconData: Icons.notifications_outlined, title: "Notifications"),
-            listTile(
                 iconData: Icons.favorite_outline,
                 title: "Wishlist",
                 onTap: () {
@@ -120,7 +119,6 @@ class _DrawerSideState extends State<DrawerSide> {
                     ),
                   );
                 }),
-            listTile(iconData: Icons.format_quote_outlined, title: "FAQs"),
             Container(
               height: 350,
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -137,7 +135,7 @@ class _DrawerSideState extends State<DrawerSide> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text("+923352580282"),
+                      Text("+112233445566"),
                     ],
                   ),
                   SizedBox(
@@ -152,7 +150,7 @@ class _DrawerSideState extends State<DrawerSide> {
                           width: 10,
                         ),
                         Text(
-                          "assarbaloch5@gmail.com",
+                          "vku@gmail.com",
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],

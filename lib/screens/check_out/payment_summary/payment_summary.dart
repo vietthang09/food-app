@@ -70,7 +70,8 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                         builder: (context) => MyGooglePay(
                           oderItemList:
                               reviewCartProvider.getReviewCartDataList,
-                          shipping: shippingChanrge,
+                          shipping:
+                              ((total / 100) * shippingChanrge).roundToDouble(),
                           total: total,
                         ),
                       ),
@@ -78,8 +79,9 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                   : CheckoutProvider().addPlaceOderData(
                       context: context,
                       oderItemList: reviewCartProvider.getReviewCartDataList,
-                      shipping: shippingChanrge,
-                      subTotal: total);
+                      shipping:
+                          ((total / 100) * shippingChanrge).roundToDouble(),
+                      total: total);
             },
             child: Text(
               "Pleace Order",

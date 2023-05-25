@@ -117,7 +117,7 @@ class CheckoutProvider with ChangeNotifier {
 
   addPlaceOderData(
       {List<ReviewCartModel> oderItemList,
-      var subTotal,
+      var total,
       var shipping,
       var context}) async {
     FirebaseFirestore.instance
@@ -127,9 +127,8 @@ class CheckoutProvider with ChangeNotifier {
         .doc()
         .set(
       {
-        "subTotal": "1234",
-        "Shipping Charge": "",
-        "Discount": "10",
+        "Total": total,
+        "Shipping": shipping,
         "orderItems": oderItemList
             .map((e) => {
                   "orderTime": DateTime.now(),

@@ -11,7 +11,8 @@ class MyGooglePay extends StatefulWidget {
   _MyGooglePayState createState() => _MyGooglePayState();
 }
 
-const String defaultGooglePayConfigString = '''
+const String defaultGooglePayConfigString =
+    '''
   {
     "provider": "google_pay",
     "data": {
@@ -58,7 +59,7 @@ class _MyGooglePayState extends State<MyGooglePay> {
         context: context,
         oderItemList: widget.oderItemList,
         shipping: widget.shipping,
-        subTotal: widget.total);
+        total: widget.total);
   }
 
   @override
